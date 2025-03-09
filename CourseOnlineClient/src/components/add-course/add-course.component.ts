@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-create-course',
@@ -36,11 +38,19 @@ export class AddCourseComponent {
 
       this.coursesService.createCourse(this.course).subscribe({
         next: (response) => {
-          alert('Course created successfully');
+          Swal.fire({
+            title: "Course created successfully!",
+            icon: "success",
+            draggable: true
+          });
           this.router.navigate(['/courses']);  
         },
         error: (error) => {
-          alert('Error creating course');
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Error creating course!",
+          });
           console.error(error);
         }
       });

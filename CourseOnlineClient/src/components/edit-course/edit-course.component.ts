@@ -10,13 +10,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-edit-course',
   templateUrl: './edit-course.component.html',
   styleUrls: ['./edit-course.component.css'],
-  imports:[ReactiveFormsModule, CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,FormsModule]
-  
+  imports: [ReactiveFormsModule, CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, FormsModule]
+
 })
 export class EditCourseComponent implements OnInit {
   courseId!: string;
@@ -31,7 +33,7 @@ export class EditCourseComponent implements OnInit {
     private coursesService: CoursesService,
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.courseId = this.route.snapshot.paramMap.get('id')!;
@@ -44,22 +46,28 @@ export class EditCourseComponent implements OnInit {
         this.course = {
           title: data.title,
           description: data.description,
-          teacherId: data.teacherId.toString() 
+          teacherId: data.teacherId.toString()
+        }
+
+
       }
-      
-      
-    }});
+    });
 
   }
 
   updateCourse() {
-    const teacherId =  this.authService.getUserId();
+    const teacherId = this.authService.getUserId();
     if (teacherId) {
       this.course.teacherId = teacherId;
 
       this.coursesService.updateCourse(this.courseId, this.course).subscribe({
         next: () => {
-          alert('Course updated successfully');
+          Swal.fire({
+            title: "Course updated successfully!",
+            icon: "success",
+            draggable: true
+          });
+
           this.router.navigate(['/courses']);
         },
         error: (err) => {

@@ -10,21 +10,23 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { AuthService } from '../../services/auth.service';
 import { MatIconModule } from '@angular/material/icon';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-lessons',
   templateUrl: './lessons.component.html',
   styleUrls: ['./lessons.component.css']
-    ,imports:[ReactiveFormsModule,MatIconModule, CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule,FormsModule]
-  
+  , imports: [ReactiveFormsModule, MatIconModule, CommonModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatSelectModule, FormsModule]
+
 })
 export class LessonsComponent implements OnInit {
   @Input() courseId!: number;
   lessons: any[] = [];
   newLesson = { title: '', content: '' };
-  showAddLessonForm: boolean = false; 
+  showAddLessonForm: boolean = false;
 
-  constructor(private lessonsService: LessonsService,private authService:AuthService) {}
+  constructor(private lessonsService: LessonsService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loadLessons();
@@ -45,36 +47,50 @@ export class LessonsComponent implements OnInit {
 
     this.lessonsService.updateLesson(this.courseId, lesson.id, updatedTitle, updatedContent).subscribe({
       next: () => {
-        alert('Lesson updated successfully');
+        Swal.fire({
+          title: "Lesson updated successfully!",
+          icon: "success",
+          draggable: true
+        });
         this.loadLessons();
       },
     });
   }
 
   deleteLesson(lessonId: number): void {
-    if (!confirm('Are you sure you want to delete this lesson?')) return;
+
 
     this.lessonsService.deleteLesson(this.courseId, lessonId).subscribe({
       next: () => {
-        alert('Lesson deleted successfully');
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "The lesson deleted!",
+        });
         this.loadLessons();
       },
     });
   }
   isTeacher() {
-    return this.authService.isTeacher();}
+    return this.authService.isTeacher();
+  }
 
-    toggleAddLessonForm() {
-      this.showAddLessonForm = !this.showAddLessonForm;
-    }
-  
-    addLesson() {
-      if (!this.newLesson.title.trim() || !this.newLesson.content.trim()) return;
-      
-      this.lessonsService.addLesson(this.courseId, this.newLesson.title, this.newLesson.content).subscribe(() => {
-        this.lessons.push({ ...this.newLesson }); 
-        this.newLesson = { title: '', content: '' }; 
-        this.toggleAddLessonForm(); 
+  toggleAddLessonForm() {
+    this.showAddLessonForm = !this.showAddLessonForm;
+  }
+
+  addLesson() {
+    if (!this.newLesson.title.trim() || !this.newLesson.content.trim()) return;
+
+    this.lessonsService.addLesson(this.courseId, this.newLesson.title, this.newLesson.content).subscribe(() => {
+      this.lessons.push({ ...this.newLesson });
+      this.newLesson = { title: '', content: '' };
+      this.toggleAddLessonForm();
+      Swal.fire({
+        title: "Lesson created successfully!",
+        icon: "success",
+        draggable: true
       });
-    }
+    });
+  }
 }

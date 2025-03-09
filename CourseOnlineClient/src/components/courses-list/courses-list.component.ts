@@ -5,18 +5,20 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { MatIconModule } from '@angular/material/icon';
+import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-courses-list',
   templateUrl: './courses-list.component.html',
   styleUrls: ['./courses-list.component.css'],
-  imports:[RouterModule,CommonModule,MatIconModule]
+  imports: [RouterModule, CommonModule, MatIconModule]
 })
 export class CoursesListComponent implements OnInit {
-  courses: Course[] = []; 
-  error: string = ''; 
+  courses: Course[] = [];
+  error: string = '';
 
-  constructor(@Inject(CoursesService) private coursesService: CoursesService,private authService:AuthService) { }
+  constructor(@Inject(CoursesService) private coursesService: CoursesService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.loadCourses();
@@ -25,7 +27,7 @@ export class CoursesListComponent implements OnInit {
   loadCourses(): void {
     this.coursesService.getAllCourses().subscribe({
       next: (courses) => {
-        this.courses = courses; 
+        this.courses = courses;
       },
       error: (err) => {
 
@@ -35,21 +37,26 @@ export class CoursesListComponent implements OnInit {
     });
   }
   isTeacher() {
-    return this.authService.isTeacher();}
-    deleteCourse(courseId: string): void {
-      if (confirm('Are you sure you want to delete this course?')) {
-        this.coursesService.deleteCourse(courseId).subscribe({
-          next: () => {
-            alert('Course deleted successfully');
-            this.loadCourses(); 
-          },
-          error: (err) => {
-            console.error('Error deleting course:', err);
-            alert('Error deleting course');
-          }
+    return this.authService.isTeacher();
+  }
+  deleteCourse(courseId: string): void {
+
+    this.coursesService.deleteCourse(courseId).subscribe({
+      next: () => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "The lesson deleted!",
         });
+        this.loadCourses();
+      },
+      error: (err) => {
+        console.error('Error deleting course:', err);
+        alert('Error deleting course');
       }
-    }
-    
+    });
+  }
 }
+
+
 
