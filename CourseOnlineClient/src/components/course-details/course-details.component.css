@@ -1,0 +1,84 @@
+.course-details-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.course-title {
+    font-size: 2.5rem;
+    color: #fca311;
+    margin-bottom: 15px;
+}
+
+.course-description {
+    font-size: 1.2rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.teacher-info {
+    font-size: 1.3rem;
+    color: #1d3557;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.lessons-title {
+    font-size: 2.1rem;
+    color: #14213d;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.lessons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.lesson-card {
+    width: 100%;
+    max-width: 600px;
+    background: #f0f5f9;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-icon {
+    color: #fca311;
+    font-size: 1.8rem;
+}
+
+.enrollment-buttons {
+    margin-top: 30px;
+}
+
+.enrollment-buttons button {
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.enrollment-buttons button:hover {
+    transform: scale(1.05);
+}

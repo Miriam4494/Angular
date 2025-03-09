@@ -1,0 +1,38 @@
+
+<div class="home-container">
+
+  <nav class="navbar">
+    <div class="logo">📚 Courses Online</div>
+    <button mat-raised-button class="nav-btn" [routerLink]="['/home']">
+      <mat-icon>home</mat-icon> Home
+    </button>
+    
+    @if(!authService.isLoggedIn()) {
+      <div class="auth-buttons">
+        <button mat-raised-button class="login-btn" (click)="openLoginDialog('login')">
+          <mat-icon>{{ 'login' | authIcon }}</mat-icon> Log in
+        </button>
+        <button mat-raised-button class="register-btn" (click)="openLoginDialog('register')">
+          <mat-icon>{{ 'register' | authIcon }}</mat-icon> Register
+        </button>
+      </div>
+    } @else {
+      <div class="auth-buttons">
+        <button mat-raised-button class="logout-btn" [routerLink]="['/']" (click)="logout()">
+          <mat-icon>{{ 'logout' | authIcon }}</mat-icon> Log out
+        </button>
+        <button mat-raised-button class="nav-btn" [routerLink]="['/courses']">All Courses</button>
+        <button mat-raised-button class="nav-btn" [routerLink]="['/myCourses']">My Courses</button>
+      </div>
+    }
+
+    @if(isTeacher()) {
+      <button mat-raised-button class="nav-btn" [routerLink]="['/addCourse']">
+         <mat-icon>add</mat-icon> Add Course
+      </button>
+    }
+  </nav>
+
+  
+</div>
+<router-outlet></router-outlet>

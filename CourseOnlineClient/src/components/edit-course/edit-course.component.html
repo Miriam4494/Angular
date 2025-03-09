@@ -1,0 +1,17 @@
+<div class="edit-course-container">
+    <h2 class="edit-course-title">Edit Course</h2>
+    <form (ngSubmit)="updateCourse()">
+      <mat-form-field appearance="outline" class="course-form-field">
+        <mat-label>Course Title</mat-label>
+        <input matInput [(ngModel)]="course.title" name="title" required />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="course-form-field">
+        <mat-label>Course Description</mat-label>
+        <textarea matInput [(ngModel)]="course.description" name="description" required></textarea>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" class="update-course-btn">Update Course</button>
+    </form>
+  </div>
+  

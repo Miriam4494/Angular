@@ -1,0 +1,44 @@
+
+@if(error){
+    <div class="error-message">
+        <p>{{ error }}</p>
+    </div>
+}
+
+@if(course){
+    
+    <div class="course-details-container">
+        <div class="enrollment-buttons">
+            @if(isEnrolled) {
+                <button mat-raised-button color="warn" (click)="leaveCourse(course.id.toString())">
+                    <mat-icon>logout</mat-icon> Leave Course
+                </button>
+            } @else {
+                <button mat-raised-button color="primary" (click)="enrollInCourse(course.id.toString())">
+                    <mat-icon>login</mat-icon> Enroll
+                </button>
+            }
+        </div>
+        <h2 class="course-title">{{ course.title }}</h2>
+        <p class="course-description">{{ course.description }}</p>
+        
+        <p class="teacher-info">
+            <mat-icon>person</mat-icon> <strong>Teacher ID:</strong> {{ course.teacherId }}
+        </p>
+
+
+
+        <div class="lessons-list">
+            @for(lesson of course.lessons; track lesson){
+                <div class="lesson-card">
+                    <mat-icon class="lesson-icon">play_circle</mat-icon>
+                    <p>{{ lesson }}</p>
+                </div>
+            }
+        </div>
+
+    
+
+        <app-lessons [courseId]="course.id"></app-lessons>
+    </div>
+}

@@ -1,0 +1,104 @@
+.edit-course-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .edit-course-container:hover {
+    transform: scale(1.02); 
+  }
+  
+  .edit-course-title {
+    font-size: 2.4rem;
+    color: #1d3557;
+    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  
+  .course-form-field {
+    width: 100%;
+    margin-bottom: 25px;
+    border-radius: 10px;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  mat-label {
+    color: #1d3557;
+    font-weight: 600;
+  }
+  
+  input, textarea {
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus, textarea:focus {
+    outline: none;
+    border-color: #fca311; 
+    background-color: #fff;
+  }
+  
+  .update-course-btn {
+    background-color: #fca311;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(252, 163, 17, 0.2);
+  }
+  
+  .update-course-btn:hover {
+    background-color: #1d3557;
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 20px rgba(29, 53, 87, 0.2);
+  }
+  
+  .update-course-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(252, 163, 17, 0.5); 
+  }
+  
+  input, textarea {
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+  }
+  
+  textarea {
+    height: 120px;
+}
+  
+  input:focus, textarea:focus {
+    border-color: #fca311;
+    background-color: #fff;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  form button {
+    width: 100%;
+  }
+  

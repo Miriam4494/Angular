@@ -1,0 +1,43 @@
+
+   @if(error){
+    <div class="error-message">
+        <p>{{ error }}</p>
+    </div>
+}
+
+@if(courses.length > 0){
+    <div class="courses-container">
+        <h2 class="section-title">Available Courses</h2>
+        <div class="course-list">
+            @for(course of courses; track course){
+                <div class="course-card">
+                    <div class="course-icon">
+                        <mat-icon>school</mat-icon>
+                    </div>
+                    <h3>{{ course.title }}</h3>
+                    <p>{{ course.description }}</p>
+                    <div class="course-buttons">
+                        <a mat-raised-button color="primary" [routerLink]="['/courses', course.id]">
+                            View Course
+                        </a>
+                        @if(isTeacher()){
+                            <button mat-raised-button color="accent" [routerLink]="['/edit-course', course.id]">
+                                Edit
+                            </button>
+                            <button mat-raised-button color="warn" (click)="deleteCourse(course.id.toString())">
+                                Delete
+                            </button>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
+@if(courses.length === 0){
+    <div class="no-courses-message">
+        <p>No courses available.</p>
+    </div>
+}
+

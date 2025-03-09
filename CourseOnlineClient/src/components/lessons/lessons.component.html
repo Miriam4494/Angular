@@ -1,0 +1,36 @@
+<div class="lessons-container">
+    <h3 class="lessons-title">
+        <mat-icon>menu_book</mat-icon> Lessons
+    </h3>
+
+    @if(isTeacher()){
+        <button (click)="toggleAddLessonForm()" class="btn add-lesson-btn">Add Lesson</button>
+
+        @if(showAddLessonForm){
+            <div class="add-lesson-form">
+                <input type="text" [(ngModel)]="newLesson.title" placeholder="Lesson Title" class="input-field">
+                <textarea [(ngModel)]="newLesson.content" placeholder="Lesson Content" class="textarea-field"></textarea>
+                <button (click)="addLesson()" class="btn save-btn">Save Lesson</button>
+                <button (click)="toggleAddLessonForm()" class="btn cancel-btn">Cancel</button>
+            </div>
+        }
+    }
+
+    <ul class="lesson-list">
+        @for(lesson of lessons; track lesson) {
+            <li class="lesson-card">
+                <div class="lesson-header">
+                    <h4>{{ lesson.title }}</h4>
+                    <p class="lesson-date">Added on: {{ lesson.date | date:'shortDate' }}</p>
+                </div>
+                <p class="lesson-content">{{ lesson.content }}</p>
+                @if(isTeacher()){
+                    <div class="lesson-actions">
+                        <button (click)="updateLesson(lesson)" class="btn edit-btn">Edit</button>
+                        <button (click)="deleteLesson(lesson.id)" class="btn delete-btn">Delete</button>
+                    </div>
+                }
+            </li>
+        }
+    </ul>
+</div>

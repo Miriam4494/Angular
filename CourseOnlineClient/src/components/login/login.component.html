@@ -1,0 +1,73 @@
+<div mat-dialog-content class="dialog-content">
+    <h2>{{ data.type === 'login' ? 'Login' : 'Register' }}</h2>
+    <p>Please enter your credentials to {{ data.type }}.</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        @if(form.get('email')?.invalid && form.get('email')?.touched){
+        <div class="error-container">
+            @if(form.get('email')?.errors?.hasOwnProperty('required')){
+            <small class="error-text">Email is required.</small>}
+            @if(form.get('email')?.errors?.hasOwnProperty('email')){
+            <small class="error-text">Invalid email format.</small>}
+        </div>}
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+
+        </mat-form-field>
+
+        @if(form.get('password')?.invalid && form.get('password')?.touched){
+        <div class="error-container">
+            @if(form.get('password')?.errors?.hasOwnProperty('required')){
+            <small class="error-text">Password is required.</small>}
+            @if(form.get('password')?.errors?.hasOwnProperty('minlength')){
+            <small class="error-text">Minimum length is 6.</small>}
+        </div>}
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+        </mat-form-field>
+
+
+        @if(data.type === 'register')
+        {
+        @if(form.get('name')?.invalid && form.get('name')?.touched){
+        <div class="error-container">
+            @if(form.get('name')?.errors?.hasOwnProperty('required')){
+            <small class="error-text">Name is required.</small>}
+        </div>}
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Name</mat-label>
+            <input matInput type="name" formControlName="name">
+        </mat-form-field>
+
+
+
+        @if(form.get('role')?.invalid && form.get('role')?.touched) {
+        <div class="error-container">
+            @if(form.get('role')?.errors?.hasOwnProperty('required')) {
+            <small class="error-text">Role is required.</small>
+            }
+        </div>
+        }
+
+        <mat-form-field appearance="fill" class="form-field">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+                <mat-option value="teacher">Teacher</mat-option>
+                <mat-option value="student">Student</mat-option>
+            </mat-select>
+
+        </mat-form-field>
+
+
+        }
+
+        <div class="dialog-actions">
+            <button mat-button (click)="closeDialog()" class="cancel-button">Cancel</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+                {{ data.type === 'login' ? 'Login' : 'Register' }}
+            </button>
+        </div>
+    </form>
+</div>

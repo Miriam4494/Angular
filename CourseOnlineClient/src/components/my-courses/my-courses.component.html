@@ -1,0 +1,15 @@
+<h2 class="courses-title">My Courses</h2>
+
+@if(myCourses.length === 0) {
+  <div class="no-courses-message">No courses enrolled.</div>
+}
+
+<ul class="courses-list">
+  @for(course of myCourses; track course) {
+    <li class="course-card">
+      <h3 class="course-title">{{ course.title }}</h3>
+      <p class="course-description">{{ course.description }}</p>
+      <button (click)="leaveCourse(course.id.toString())" class="btn leave-btn">Leave Course</button>
+    </li>
+  }
+</ul>

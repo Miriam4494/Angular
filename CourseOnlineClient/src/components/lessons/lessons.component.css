@@ -1,0 +1,133 @@
+.lessons-container {
+    text-align: center;
+    padding: 50px 20px;
+    color: #333;
+}
+
+.section-title {
+    font-size: 2.2rem; 
+    color: #fca311;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.lesson-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.lesson-card {
+    width: 250px; 
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15); 
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.lesson-card:hover {
+    transform: scale(1.03); 
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-header {
+    margin-bottom: 10px;
+}
+
+.lesson-card h4 {
+    font-size: 1.4rem; 
+    color: #1d3557;
+    margin-bottom: 5px;
+}
+
+.lesson-date {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.lesson-content {
+    font-size: 0.95rem; 
+    color: #444;
+    margin: 15px 0;
+    line-height: 1.4;
+}
+
+.lesson-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.lesson-actions button {
+    padding: 6px 10px; 
+    font-size: 0.85rem; 
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.lesson-actions button:hover {
+    transform: scale(1.05);
+}
+
+.add-lesson-btn, .save-btn, .cancel-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    border-radius: 25px;
+    transition: transform 0.3s;
+}
+
+.add-lesson-btn {
+    background-color: #1d3557;
+    color: white;
+}
+
+.save-btn, .cancel-btn {
+    background-color: #bbb;
+    color: white;
+}
+
+.save-btn:hover, .cancel-btn:hover {
+    background-color: #888;
+}
+.lessons-title {
+    font-size: 1.8rem;
+    color: #14213d;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.input-field, .textarea-field {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.textarea-field {
+    height: 80px; 
+}
+
+.textarea-field:focus, .input-field:focus {
+    border-color: #1d3557;
+    outline: none;
+}
+
+.error-message {
+    text-align: center;
+    color: #ff4500;
+    font-weight: bold;
+    font-size: 1.2rem;
+}

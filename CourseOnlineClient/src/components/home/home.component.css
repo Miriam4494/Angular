@@ -1,0 +1,112 @@
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f5f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #14213d;
+  padding: 15px 30px;
+  color: white;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fca311;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons button {
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+.login-btn { background-color: #fca311; color: #14213d; }
+.register-btn { background-color: #ff4500; color: white; }
+.logout-btn { background-color: #ff4500; color: white; }
+.nav-btn {
+  background-color: #1d3557;
+  color: white;
+  border-radius: 25px; 
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+  background-color: #457b9d;
+}
+.add-course-btn { background-color: #ff4500; color: white; }
+
+.hero-section {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #14213d, #1d3557);
+  color: white;
+}
+
+.hero-section h1 { font-size: 2.5rem; color: #fca311; }
+.hero-section p { font-size: 1.2rem; margin-bottom: 20px; }
+.explore-btn {
+  background-color: #fca311;
+  color: #14213d;
+  font-size: 1.1rem;
+  padding: 12px 25px;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+.explore-btn:hover { background-color: #ff8500; }
+
+.features {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 0;
+}
+
+.feature-card {
+  text-align: center;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.popular-courses {
+  text-align: center;
+  padding: 50px 0;
+}
+
+.course-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.course-card {
+  width: 300px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials {
+  text-align: center;
+  background: #1d3557;
+  color: white;
+  padding: 40px 0;
+}
+
